@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Drum Kit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>JavaScript Drum Kit</h1>
+  <section class="drums">
+    <button class="drum" type="button" data-key="65">
+      <span class="key" >A</span>
+      <span class="sound">clap</span>
+    </button>
+    <button class="drum" type="button" data-key="83">
+      <span class="key">S</span>
+      <span class="sound">hihat</span>
+    </button>
+    <button class="drum" type="button" data-key="68">
+      <span class="key">D</span>
+      <span class="sound">kick</span>
+    </button>
+    <button class="drum" type="button" data-key="70">
+      <span class="key">F</span>
+      <span class="sound">openhat</span>
+    </button>
+    <button class="drum" type="button"  data-key="71">
+      <span class="key">G</span>
+      <span class="sound">boom</span>
+    </button>
+    <button class="drum" type="button" data-key="72">
+      <span class="key">H</span>
+      <span class="sound">ride</span>
+    </button>
+    <button class="drum" type="button"  data-key="74">
+      <span class="key">J</span>
+      <span class="sound">snare</span>
+    </button>
+    <button class="drum" type="button" data-key="75">
+      <span class="key">K</span>
+      <span class="sound">tom</span>
+    </button>
+    <button class="drum" type="button" data-key="76">
+      <span class="key">L</span>
+      <span class="sound">tink</span>
+    </button>
+
+    <div class="audios">
+      <audio src="../sounds/clap.wav" class="audio" data-key="65"></audio>
+      <audio src="../sounds/hihat.wav" class="audio" data-key="83"></audio>
+      <audio src="../sounds/kick.wav" class="audio" data-key="68"></audio>
+      <audio src="../sounds/openhat.wav" class="audio" data-key="70"></audio>
+      <audio src="../sounds/boom.wav" class="audio" data-key="71"></audio>
+      <audio src="../sounds/ride.wav" class="audio" data-key="72"></audio>
+      <audio src="../sounds/snare.wav" class="audio" data-key="74"></audio>
+      <audio src="../sounds/tom.wav" class="audio" data-key="75"></audio>
+      <audio src="../sounds/tink.wav" class="audio" data-key="76"></audio>
+    </div>
+  </section>
+  <!-- <script src="app.js"></script> -->
+  <script>
+    // By WesBos
+    function playSound (e) {
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const button = document.querySelector(`button[data-key="${e.keyCode}"]`);
+      if ( !audio ) return;
+      // Restart everytime the keydown event fires.
+      audio.currentTime = 0;
+      audio.play();
+      button.classList.add('fire');
+    }
+    function removeTransition(e) {
+      if (e.propertyName !== 'transform') return ;
+      this.classList.remove('fire');
+    }
+    const btnList = document.querySelectorAll('.drum');
+    btnList.forEach( key => key.addEventListener('transitionend', removeTransition));
+    window.addEventListener('keydown', playSound);
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+
+.drums {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.drum {
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: block;
+  width: 70px;
+  padding: 10px 0;
+  margin: 0 5px;
+  outline: none;
+  background-color: rgba(0,0,0,0.6);
+  transition: 0.1s all ease-in-out;
+}
+
+.drum.fire {
+  border: 3ps solid #f1c40f;
+  transform: scale(1.1);
+}
+
+.key, .sound {
+  display: block;
+}
+
+.key {
+  font-size: 20px;
+  line-height: 1;
+  margin-bottom: 4px;
+  color: #ffffff;
+}
+
+.sound {
+  font-size: 15px;
+  line-height: 1;
+  color: #f1c40f;
+}
